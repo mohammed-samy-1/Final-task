@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Final task</string>
+    <string name="welcome_back">welcome back!</string>
+    <string name="welcome_text_2"><![CDATA[Enter Your Username & Password]]></string>
+</resources>
