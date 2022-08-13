@@ -1,9 +1,6 @@
 package com.mo_samy.finaltask.api
 
-import com.mo_samy.finaltask.models.DataModel
-import com.mo_samy.finaltask.models.LoginData
-import com.mo_samy.finaltask.models.LoginResponse
-import com.mo_samy.finaltask.models.Product
+import com.mo_samy.finaltask.models.*
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -17,7 +14,9 @@ interface Calls {
     @GET("products/{id}")
     fun getProductById(@Path("id") productId: Int): Call<Product>
     @POST("login")
-    fun login(@Body info: LoginData): Call<LoginResponse>
+    fun login(@Body data: LoginData): Call<LoginResponse>
+    @POST("sign_up")
+    fun signUp(@Body data: SignupData):Call<SignUpResponse>
 
 
 }

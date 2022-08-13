@@ -10,9 +10,6 @@ import com.mo_samy.finaltask.R
 
 class SignupFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = SignupFragment()
-    }
 
     private lateinit var viewModel: SignupViewModel
 
@@ -21,12 +18,14 @@ class SignupFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.signup_fragment, container, false)
+
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SignupViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this)[SignupViewModel::class.java]
+
     }
+
 
 }

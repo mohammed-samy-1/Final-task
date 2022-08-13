@@ -13,6 +13,8 @@ import retrofit2.Response
 class LoginViewModel : ViewModel() {
     private var responseCodeMLD:MutableLiveData<Int> = MutableLiveData()
     val responseCode :LiveData<Int> get() = responseCodeMLD
+    private var nameMLD:MutableLiveData<String> = MutableLiveData()
+    val name :LiveData<String> get() = nameMLD
     private var errorMessage: MutableLiveData<String> = MutableLiveData()
     val errorLiveData: LiveData<String> get() = errorMessage
     fun login(email:String , password:String){
@@ -24,6 +26,7 @@ class LoginViewModel : ViewModel() {
                 response: Response<LoginResponse>?
             ) {
                 responseCodeMLD.postValue(response!!.code())
+                nameMLD.postValue(response.body().data.name)
             }
 
             override fun onFailure(call: Call<LoginResponse>?, t: Throwable?) {

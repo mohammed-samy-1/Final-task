@@ -19,9 +19,9 @@ class HomeViewModel : ViewModel() {
         val conn = RetrofitFactory.call
         val call = conn.getProducts()
         call.enqueue(object : Callback<DataModel> {
-            override fun onResponse(call: Call<DataModel>?, response: Response<DataModel>?) {
-                when (response!!.code()) {
-                    200 -> productsMLD.postValue(response.body().data as ArrayList<Data>?)
+            override fun onResponse(call: Call<DataModel>, response: Response<DataModel>) {
+                when (response.code()) {
+                    200 -> productsMLD.postValue(response.body().data as ArrayList<Data>)
                     else -> errorMessage.postValue(response.code().toString())
                 }
             }
