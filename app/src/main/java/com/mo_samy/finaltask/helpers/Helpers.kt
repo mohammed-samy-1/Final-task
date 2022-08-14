@@ -10,7 +10,7 @@ class Helpers {
             }
         }
         fun String.validatePass():Boolean{
-            return !(this.isEmpty()||this.length<6)
+            return !(this.isEmpty()||this.length<8)
         }
         const val LOGIN_FLAG : String = "IS_LOGGED"
         const val SP_FLAG : String = "login"

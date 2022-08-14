@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 import com.mo_samy.finaltask.R
 import com.mo_samy.finaltask.models.Data
 
-class ProductsAdapter(private val context :Context, private var items :MutableList<Data>, var onClick :OnItemClicked)
+class ProductsAdapter(private val context :Context, private var items :MutableList<Data>, private var onClick :OnItemClicked)
     : RecyclerView.Adapter<ProductHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductHolder {
         return ProductHolder(LayoutInflater.from(parent.context).inflate(R.layout.product_holder,parent,false))
@@ -27,7 +27,7 @@ class ProductsAdapter(private val context :Context, private var items :MutableLi
         Glide.with(context)
             .asBitmap()
             .load(items[position].image)
-            .placeholder(R.drawable.ic_launcher_background)
+            .placeholder(R.drawable.ic_baseline_shopping_bag_24)
             .into(holder.img)
         holder.name.text = items[position].name
         holder.price.text = "${ items[position].price }$"

@@ -79,7 +79,7 @@ class LoginFragment : Fragment() {
                     etEmail.error = "the email is invalid"
                 }
                 if (!password.validatePass()) {
-                    etPass.error = "the password must be at least 10 characters"
+                    etPass.error = "the password must be at least 8 characters"
                 }
             }
 

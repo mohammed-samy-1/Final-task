@@ -13,15 +13,18 @@ import retrofit2.Response
 class HomeViewModel : ViewModel() {
     private val productsMLD: MutableLiveData<ArrayList<Data>> = MutableLiveData()
     val productsLD: LiveData<ArrayList<Data>> get() = productsMLD
-    private var errorMessage: MutableLiveData<String> = MutableLiveData()
-    val errorLiveData: LiveData<String> get() = errorMessage
+    private var errorMessage: MutableLiveData<String?> = MutableLiveData()
+    val errorLiveData: LiveData<String?> get() = errorMessage
     fun getProduct() {
         val conn = RetrofitFactory.call
         val call = conn.getProducts()
         call.enqueue(object : Callback<DataModel> {
             override fun onResponse(call: Call<DataModel>, response: Response<DataModel>) {
                 when (response.code()) {
-                    200 -> productsMLD.postValue(response.body().data as ArrayList<Data>)
+                    200 ->{
+                        productsMLD.postValue(response.body().data as ArrayList<Data>)
+                        errorMessage.postValue(null)
+                    }
                     else -> errorMessage.postValue(response.message())
                 }
             }
