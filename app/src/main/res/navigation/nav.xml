@@ -34,7 +34,13 @@
         tools:layout="@layout/signup_fragment" >
         <action
             android:id="@+id/action_signupFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_exit_anim"
+            app:popExitAnim="@anim/pop_enter_anim"
+            app:popUpTo="@id/nav"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -48,6 +54,13 @@
             app:exitAnim="@anim/pop_enter_anim"
             app:popUpTo="@id/nav"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_productFragment"
+            app:destination="@id/productFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_exit_anim"
+            app:popExitAnim="@anim/pop_enter_anim" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -65,4 +78,9 @@
             app:popUpTo="@id/nav"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.mo_samy.finaltask.ui.product.ProductFragment"
+        android:label="product_fragment"
+        tools:layout="@layout/product_fragment" />
 </navigation>

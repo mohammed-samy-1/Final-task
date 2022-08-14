@@ -1,6 +1,16 @@
 <resources>
-    <string name="app_name">Final task</string>
+    <string name="app_name">Shop</string>
     <string name="welcome_back">welcome back!</string>
     <string name="welcome_text_2"><![CDATA[Enter Your Username & Password]]></string>
     <string name="have_a_good_day">have a good day</string>
+    <string name="name">Name:</string>
+    <string name="price">Price:</string>
+    <string name="buy">buy</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="product_image">product image</string>
+    <string name="log_out">log out</string>
+    <string name="account">account</string>
+    <string name="error">error</string>
+    <string name="log_in">Log in</string>
+    <string name="e_mail">E-Mail</string>
 </resources>

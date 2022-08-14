@@ -22,7 +22,7 @@ class HomeViewModel : ViewModel() {
             override fun onResponse(call: Call<DataModel>, response: Response<DataModel>) {
                 when (response.code()) {
                     200 -> productsMLD.postValue(response.body().data as ArrayList<Data>)
-                    else -> errorMessage.postValue(response.code().toString())
+                    else -> errorMessage.postValue(response.message())
                 }
             }
 

@@ -15,5 +15,6 @@ class Helpers {
         const val LOGIN_FLAG : String = "IS_LOGGED"
         const val SP_FLAG : String = "login"
         const val NAME_FLAG : String = "userName"
+        const val ID_FLAG : String = "ID"
     }
 }

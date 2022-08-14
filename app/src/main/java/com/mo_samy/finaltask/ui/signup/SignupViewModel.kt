@@ -13,7 +13,7 @@ import retrofit2.Response
 
 class SignupViewModel : ViewModel() {
     private val mData:MutableLiveData<DataX> = MutableLiveData()
-    val dara :LiveData<DataX> get() = mData
+    val data :LiveData<DataX> get() = mData
     private var errorMessage: MutableLiveData<String> = MutableLiveData()
     val errorLiveData: LiveData<String> get() = errorMessage
     fun signUp(data :SignupData){
@@ -27,7 +27,8 @@ class SignupViewModel : ViewModel() {
                 if (null != response){
                     when(response.code()){
                         200 -> mData.postValue(response.body().data)
-                        else -> errorMessage.postValue(response.errorBody().toString())
+                        500 -> errorMessage.postValue("the email already exist")
+                        else -> errorMessage.postValue(response.message())
                     }
                 }else{
                     errorMessage.postValue("no response from the server")

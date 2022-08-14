@@ -7,17 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mo_samy.finaltask.R
 import com.mo_samy.finaltask.models.Data
 
-class ProductsAdapter(private val context :Context, private var items :MutableList<Data>)
+class ProductsAdapter(private val context :Context, private var items :MutableList<Data>, var onClick :OnItemClicked)
     : RecyclerView.Adapter<ProductHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductHolder {
-        return ProductHolder(LayoutInflater.from(parent.context).inflate(R.layout.producct_holder,parent,false))
+        return ProductHolder(LayoutInflater.from(parent.context).inflate(R.layout.product_holder,parent,false))
     }
-
+    interface OnItemClicked{
+        fun onClick(id: Int)
+    }
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
@@ -28,11 +31,9 @@ class ProductsAdapter(private val context :Context, private var items :MutableLi
             .into(holder.img)
         holder.name.text = items[position].name
         holder.price.text = "${ items[position].price }$"
-//        holder.ccl.setOnClickListener {
-//            val intent = Intent(context, DetailsActivity::class.java)
-//            intent.putExtra("id", items[position].id)
-//            context.startActivity(intent)
-//        }
+        holder.ccl.setOnClickListener {
+            onClick.onClick(items[position].id)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -45,6 +46,6 @@ class ProductsAdapter(private val context :Context, private var items :MutableLi
         var  img :ImageView = itemView.findViewById(R.id.img_product_list)
         var  name :TextView = itemView.findViewById(R.id.txt_name_list)
         var  price :TextView = itemView.findViewById(R.id.txt_price_list)
-        //val ccl :CardView = itemView.findViewById(R.id.parent)
+        val ccl : CardView = itemView.findViewById(R.id.parent)
     }
 
